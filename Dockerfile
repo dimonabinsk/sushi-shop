@@ -1,8 +1,8 @@
-FROM node:16-alpine as client
+FROM node:18-alpine as client
 
 WORKDIR /app/client
 
-COPY client/package.json /app/client
+COPY client/package*.json /app/client
 
 RUN npm install
 
@@ -10,11 +10,11 @@ COPY client /app/client
 
 RUN npm run build
 
-FROM node:16-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
-COPY server/package.json /app
+COPY server/package*.json /app
 
 RUN npm install
 
